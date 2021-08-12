@@ -1,3 +1,4 @@
+
 .App{
   text-align: center;
 }
@@ -13,11 +14,11 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin: auto;
-  box-shadow: 0 20px 10px -10px gray;
+  box-shadow: 0 20px 10px -10px rgb(6, 150, 240);
   background-color: whitesmoke;
   padding: 20px;
   border-radius: 6px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .to-do-list {
@@ -25,14 +26,21 @@ body {
   flex-flow: row wrap;
   list-style-type: none;
   justify-content: space-between;
+  align-items: center;
   width: 90%;
+  padding-inline-start: 5%;
 }
 
 .to-do-item {
   width: 200px;
   height: 150px;
-  box-shadow: 0 20px 10px -10px gray;
+  box-shadow: 0 20px 10px -10px rgb(6, 150, 240);
   text-align: center;
   border-radius: 6px;
   background-color: whitesmoke;
+}
+
+.urgent-input {
+  display: flex;
+  justify-content: center;
 }

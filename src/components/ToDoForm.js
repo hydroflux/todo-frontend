@@ -19,8 +19,10 @@ export default class ToDoForm extends Component {
                 <input type="text" name="title"/>
                 <label>Content</label>
                 <input type="text" name="text"/>
-                <label>Urgent</label>
-                <input type="checkbox" name="urgent"/>
+                <div className="urgent-input">
+                    <label>Urgent</label>
+                    <input type="checkbox" name="urgent"/>
+                </div>
                 <input type="submit" />
             </form>
         )
