@@ -38,12 +38,19 @@ class App extends Component {
     })
   }
 
+  deleteToDo = ( id ) => {
+    const filteredState = this.state.to_dos.filter( to_do => to_do.id !== id )
+    this.setState({
+      to_dos: filteredState
+    })
+  }
+
   render(){
     return (
       <div className="App">
         <h1>To Do App</h1>
         <ToDoForm addToDo={this.addToDo}/>
-        <ToDoContainer to_dos={this.state.to_dos}/>
+        <ToDoContainer to_dos={this.state.to_dos} deleteToDo={this.deleteToDo}/>
       </div>
     )
   }
