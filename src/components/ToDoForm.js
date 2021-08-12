@@ -18,16 +18,21 @@ export default class ToDoForm extends Component {
         this.setState({ [name]: value })
     }
 
+    handleSubmit = event => {
+        event.preventDefault()
+        this.props.addToDo( this.state )
+    }
+
     render() {
         const { title, content, urgent } = this.state
 
         return (
-            <form className="to-do-form">
+            <form className="to-do-form" onSubmit={this.handleSubmit}>
                 <h2>Create A New To Do Item</h2>
                 <label>Title</label>
                 <input type="text" name="title" value={title} onChange={this.handleChange}/>
                 <label>Content</label>
-                <input type="text" name="text" value={content} onChange={this.handleChange}/>
+                <input type="text" name="content" value={content} onChange={this.handleChange}/>
                 <div className="urgent-input">
                     <label>Urgent</label>
                     <input type="checkbox" name="urgent" checked={urgent} onChange={this.handleChange}/>

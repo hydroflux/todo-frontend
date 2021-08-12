@@ -24,12 +24,25 @@ class App extends Component {
       .then( to_dos => this.setState({ to_dos }) )
   }
 
+  addToDo = ( newToDo ) => {
+    this.setState({
+      to_dos: [...this.state.to_dos, newToDo]
+    })
+
+    fetch( baseURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify( newToDo )
+    })
+  }
 
   render(){
     return (
       <div className="App">
         <h1>To Do App</h1>
-        <ToDoForm />
+        <ToDoForm addToDo={this.addToDo}/>
         <ToDoContainer to_dos={this.state.to_dos}/>
       </div>
     )
