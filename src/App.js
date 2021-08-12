@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
+import ToDoForm from './components/ToDoForm'
 import ToDoContainer from './containers/ToDoContainer'
 
 const baseURL = 'http://localhost:3000/to_dos'
@@ -28,6 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>To Do App</h1>
+        <ToDoForm />
         <ToDoContainer to_dos={this.state.to_dos}/>
       </div>
     )

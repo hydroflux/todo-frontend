@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 
+const initialState = {
+    title: "",
+    content: "",
+    urgent: false,
+    done: false
+}
+
 export default class ToDoForm extends Component {
+
+    state = initialState
+
     render() {
         return (
             <form>
