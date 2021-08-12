@@ -20,7 +20,7 @@ class App extends Component {
   getToDos = () => {
     fetch( baseURL )
       .then( parseHTTPResponse )
-      .then( to_dos => this.setState( to_dos ) )
+      .then( to_dos => this.setState({ to_dos }) )
   }
 
 
