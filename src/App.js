@@ -43,6 +43,8 @@ class App extends Component {
     this.setState({
       to_dos: filteredState
     })
+
+    fetch( `${baseURL}/${id}`, { method: 'DELETE' })
   }
 
   render(){
