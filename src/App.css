@@ -1,4 +1,26 @@
-.to-do-list{
+.App{
+  text-align: center;
+}
+
+body {
+  background-color: lightskyblue;
+}
+
+.to-do-form {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+  box-shadow: 0 20px 10px -10px gray;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.to-do-list {
   display: flex;
   flex-flow: row wrap;
   list-style-type: none;
@@ -6,10 +28,11 @@
   width: 90%;
 }
 
-.to-do-item{
+.to-do-item {
   width: 200px;
   height: 150px;
   box-shadow: 0 20px 10px -10px gray;
   text-align: center;
   border-radius: 6px;
+  background-color: whitesmoke;
 }
