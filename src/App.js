@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css'
+import ToDoContainer from './containers/ToDoContainer'
 
 const baseURL = 'http://localhost:3000/to_dos'
 const parseHTTPResponse = response => response.json()
@@ -25,7 +26,10 @@ class App extends Component {
 
   render(){
     return (
-      <h1>To Do App</h1>
+      <div className="App">
+        <h1>To Do App</h1>
+        <ToDoContainer to_dos={this.state.to_dos}/>
+      </div>
     )
   }
 }
