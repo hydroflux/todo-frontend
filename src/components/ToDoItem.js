@@ -8,9 +8,8 @@ export default function ToDoItem({ id, title, content, deleteToDo }){
         <li className="to-do-item">
             <h2>{title}</h2>
             <h3>{content}</h3>
-            <button className="delete-button" onClick={handleClick}>
-            DELETE
-            </button>
+            <button className="delete-button" onClick={handleClick}>DELETE</button>
+            <button className="edit-button" onClick={handleClick}>EDIT</button>
         </li>
     )
 }

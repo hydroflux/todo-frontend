@@ -45,6 +45,11 @@ body {
   position: relative;
 }
 
+.edit-button {
+  background-color: orangered;
+  position: relative;
+}
+
 .urgent-input {
   display: flex;
   justify-content: center;
