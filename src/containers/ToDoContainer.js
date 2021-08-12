@@ -8,7 +8,7 @@ export default function ToDoContainer({ to_dos }){
     }
 
     return (
-        <ul>
+        <ul className="to-do-list">
             { showToDos() }
         </ul>
     )
