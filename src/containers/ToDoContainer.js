@@ -9,7 +9,7 @@ export default function ToDoContainer({ to_dos }){
 
     return (
         <ul>
-            {showToDos()}
+            { showToDos() }
         </ul>
     )
 }
