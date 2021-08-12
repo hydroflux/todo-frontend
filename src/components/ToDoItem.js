@@ -6,6 +6,9 @@ export default function ToDoItem({ title, content }){
         <li className="to-do-item">
             <h2>{title}</h2>
             <h3>{content}</h3>
+            <button className="delete-button">
+            Delete
+            </button>
         </li>
     )
 }

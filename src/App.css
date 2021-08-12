@@ -40,6 +40,11 @@ body {
   background-color: whitesmoke;
 }
 
+.delete-button {
+  background-color: violet;
+  position: relative;
+}
+
 .urgent-input {
   display: flex;
   justify-content: center;
