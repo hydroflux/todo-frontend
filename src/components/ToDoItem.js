@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import ToDoForm from './ToDoForm'
 
-export default function ToDoItem({ id, title, content, deleteToDo }){
+export default function ToDoItem({ to_do, deleteToDo }){
+    const { id, title, content } = to_do
 
     const [ isToggled, setIsToggled] = useState(false)
     const handleClick = event => deleteToDo(id)
@@ -16,5 +17,5 @@ export default function ToDoItem({ id, title, content, deleteToDo }){
         </li>
     )
 
-    return isToggled ? <ToDoForm /> : toDoCard()
+    return isToggled ? <ToDoForm to_do={to_do}/> : toDoCard()
 }

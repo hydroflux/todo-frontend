@@ -24,11 +24,11 @@ export default class ToDoForm extends Component {
     }
 
     render() {
-        const { title, content, urgent } = this.state
+        const { title, content, urgent, done } = this.state
 
         return (
             <form className="to-do-form" onSubmit={this.handleSubmit}>
-                <h2>Create A New To Do Item</h2>
+                {this.props.to_do ? <h2>Edit To Do</h2> : <h2>Create A New To Do Item</h2>}
                 <label>Title</label>
                 <input type="text" name="title" value={title} onChange={this.handleChange}/>
                 <label>Content</label>
@@ -36,6 +36,10 @@ export default class ToDoForm extends Component {
                 <div className="urgent-input">
                     <label>Urgent</label>
                     <input type="checkbox" name="urgent" checked={urgent} onChange={this.handleChange}/>
+                </div>
+                <div className="urgent-input">
+                    <label>Completed</label>
+                    <input type="checkbox" name="done" checked={done} onChange={this.handleChange}/>
                 </div>
                 <input type="submit" />
             </form>
