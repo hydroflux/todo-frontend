@@ -11,6 +11,18 @@ export default class ToDoForm extends Component {
 
     state = initialState
 
+    componentDidMount(){
+        if (this.props.to_do){
+            const {title, content, urgent, done} = this.props.to_do
+            this.setState({
+                title,
+                content,
+                urgent,
+                done
+            })
+        }
+    }
+
     handleChange = event => {
         let { name, value, checked } = event.target
 
@@ -23,8 +35,18 @@ export default class ToDoForm extends Component {
         this.props.addToDo( this.state )
     }
 
+    showDoneCheckbox = () => {
+        return this.props.to_do
+        ? (
+            <div className="input-group">
+                <label>Completed</label>
+                <input type="checkbox" name="done" checked={this.state.done} onChange={this.handleChange}/>
+            </div>
+        ) : null
+    }
+
     render() {
-        const { title, content, urgent, done } = this.state
+        const { title, content, urgent } = this.state
 
         return (
             <form className="to-do-form" onSubmit={this.handleSubmit}>
@@ -37,14 +59,7 @@ export default class ToDoForm extends Component {
                     <label>Urgent</label>
                     <input type="checkbox" name="urgent" checked={urgent} onChange={this.handleChange}/>
                 </div>
-                {this.props.to_do
-                ? (
-                    <div className="input-group">
-                        <label>Completed</label>
-                        <input type="checkbox" name="done" checked={done} onChange={this.handleChange}/>
-                    </div>
-                ) : null
-                }
+                {this.showDoneCheckbox()}
                 <input type="submit" />
             </form>
         )
