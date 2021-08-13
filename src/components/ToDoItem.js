@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ToDoForm from './ToDoForm'
 
 export default function ToDoItem({ id, title, content, deleteToDo }){
 
@@ -6,7 +7,7 @@ export default function ToDoItem({ id, title, content, deleteToDo }){
     const handleClick = event => deleteToDo(id)
     const handleToggle = () => setIsToggled( !isToggled )
 
-    return (
+    const toDoCard = () => (
         <li className="to-do-item">
             <h2>{title}</h2>
             <h3>{content}</h3>
@@ -14,4 +15,6 @@ export default function ToDoItem({ id, title, content, deleteToDo }){
             <button className="edit-button" onClick={handleToggle}>EDIT</button>
         </li>
     )
+
+    return isToggled ? <ToDoForm /> : toDoCard()
 }
