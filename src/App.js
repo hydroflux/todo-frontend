@@ -3,7 +3,7 @@ import './App.css'
 import ToDoForm from './components/ToDoForm'
 import ToDoContainer from './containers/ToDoContainer'
 
-const baseURL = 'http://localhost:3000/to_dos'
+const baseURL = 'http://localhost:3000/to_dos/'
 const parseHTTPResponse = response => response.json()
 
 class App extends Component {
@@ -34,13 +34,21 @@ class App extends Component {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify( newToDo )
+      body: JSON.stringify({to_do: newToDo})
     })
   }
 
   updateToDo = (updatedToDo) => {
     let to_dos = this.state.to_dos.map( to_do => to_do.id === updatedToDo.id ? updatedToDo : to_do )
     this.setState({to_dos})
+
+    fetch( `${baseURL}${updatedToDo.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({to_do: updatedToDo})
+    })
   }
 
   deleteToDo = ( id ) => {
@@ -49,7 +57,7 @@ class App extends Component {
       to_dos: filteredState
     })
 
-    fetch( `${baseURL}/${id}`, { method: 'DELETE' })
+    fetch( `${baseURL}${id}`, { method: 'DELETE' })
   }
 
   render(){
