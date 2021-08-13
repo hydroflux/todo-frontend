@@ -38,6 +38,11 @@ class App extends Component {
     })
   }
 
+  updateToDo = (updatedToDo) => {
+    let to_dos = this.state.to_dos.map( to_do => to_do.id === updatedToDo.id ? updatedToDo : to_do )
+    this.setState({to_dos})
+  }
+
   deleteToDo = ( id ) => {
     const filteredState = this.state.to_dos.filter( to_do => to_do.id !== id )
     this.setState({
@@ -51,8 +56,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>To Do App</h1>
-        <ToDoForm addToDo={this.addToDo}/>
-        <ToDoContainer to_dos={this.state.to_dos} deleteToDo={this.deleteToDo}/>
+        <ToDoForm submitAction={this.addToDo}/>
+        <ToDoContainer to_dos={this.state.to_dos} submitAction={this.updateToDo} deleteToDo={this.deleteToDo}/>
       </div>
     )
   }

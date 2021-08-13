@@ -13,8 +13,9 @@ export default class ToDoForm extends Component {
 
     componentDidMount(){
         if (this.props.to_do){
-            const {title, content, urgent, done} = this.props.to_do
+            const {id, title, content, urgent, done} = this.props.to_do
             this.setState({
+                id,
                 title,
                 content,
                 urgent,
@@ -26,13 +27,13 @@ export default class ToDoForm extends Component {
     handleChange = event => {
         let { name, value, checked } = event.target
 
-        value = ( name === "urgent" || "done" ) ? checked : value
+        value = ( name === "urgent" ) || ( name === "done" ) ? checked : value
         this.setState({ [name]: value })
     }
 
     handleSubmit = event => {
         event.preventDefault()
-        this.props.addToDo( this.state )
+        this.props.submitAction( this.state )
     }
 
     showDoneCheckbox = () => {
