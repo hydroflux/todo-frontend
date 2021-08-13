@@ -34,6 +34,9 @@ export default class ToDoForm extends Component {
     handleSubmit = event => {
         event.preventDefault()
         this.props.submitAction( this.state )
+        if (this.props.handleToggle){
+            this.props.handleToggle()
+        }
     }
 
     showDoneCheckbox = () => {
@@ -41,7 +44,12 @@ export default class ToDoForm extends Component {
         ? (
             <div className="input-group">
                 <label>Completed</label>
-                <input type="checkbox" name="done" checked={this.state.done} onChange={this.handleChange}/>
+                <input
+                    type="checkbox"
+                    name="done"
+                    checked={this.state.done}
+                    onChange={this.handleChange}
+                />
             </div>
         ) : null
     }
@@ -53,12 +61,27 @@ export default class ToDoForm extends Component {
             <form className="to-do-form" onSubmit={this.handleSubmit}>
                 {this.props.to_do ? <h2>Edit To Do</h2> : <h2>Create A New To Do Item</h2>}
                 <label>Title</label>
-                <input type="text" name="title" value={title} onChange={this.handleChange}/>
+                <input
+                    type="text"
+                    name="title"
+                    value={title}
+                    onChange={this.handleChange}
+                />
                 <label>Content</label>
-                <input type="text" name="content" value={content} onChange={this.handleChange}/>
+                <input
+                    type="text"
+                    name="content"
+                    value={content}
+                    onChange={this.handleChange}
+                />
                 <div className="input-group">
                     <label>Urgent</label>
-                    <input type="checkbox" name="urgent" checked={urgent} onChange={this.handleChange}/>
+                    <input
+                        type="checkbox"
+                        name="urgent"
+                        checked={urgent}
+                        onChange={this.handleChange}    
+                    />
                 </div>
                 {this.showDoneCheckbox()}
                 <input type="submit" />
