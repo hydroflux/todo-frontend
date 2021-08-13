@@ -12,10 +12,23 @@ export default function ToDoItem({ to_do, submitAction, deleteToDo }){
         <li className="to-do-item">
             <h2>{title}</h2>
             <h3>{content}</h3>
-            <button className="delete-button" onClick={handleClick}>DELETE</button>
-            <button className="edit-button" onClick={handleToggle}>EDIT</button>
+            <button
+                className="delete-button"
+                onClick={handleClick}
+                >DELETE
+            </button>
+            <button
+                className="edit-button"
+                onClick={handleToggle}
+                >EDIT
+            </button>
         </li>
     )
 
-    return isToggled ? <ToDoForm submitAction={submitAction} to_do={to_do}/> : toDoCard()
+    return isToggled
+        ? <ToDoForm
+            handleToggle={handleToggle} 
+            submitAction={submitAction}
+            to_do={to_do}/>
+        : toDoCard()
 }
