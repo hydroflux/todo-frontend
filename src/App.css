@@ -50,7 +50,8 @@ body {
   position: relative;
 }
 
-.urgent-input {
+.input-group {
   display: flex;
   justify-content: center;
 }
+

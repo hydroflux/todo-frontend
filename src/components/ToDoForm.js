@@ -14,7 +14,7 @@ export default class ToDoForm extends Component {
     handleChange = event => {
         let { name, value, checked } = event.target
 
-        value = ( name === "urgent" ) ? checked : value
+        value = ( name === "urgent" || "done" ) ? checked : value
         this.setState({ [name]: value })
     }
 
@@ -33,14 +33,18 @@ export default class ToDoForm extends Component {
                 <input type="text" name="title" value={title} onChange={this.handleChange}/>
                 <label>Content</label>
                 <input type="text" name="content" value={content} onChange={this.handleChange}/>
-                <div className="urgent-input">
+                <div className="input-group">
                     <label>Urgent</label>
                     <input type="checkbox" name="urgent" checked={urgent} onChange={this.handleChange}/>
                 </div>
-                <div className="urgent-input">
-                    <label>Completed</label>
-                    <input type="checkbox" name="done" checked={done} onChange={this.handleChange}/>
-                </div>
+                {this.props.to_do
+                ? (
+                    <div className="input-group">
+                        <label>Completed</label>
+                        <input type="checkbox" name="done" checked={done} onChange={this.handleChange}/>
+                    </div>
+                ) : null
+                }
                 <input type="submit" />
             </form>
         )
