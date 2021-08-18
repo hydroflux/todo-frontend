@@ -4,6 +4,7 @@ import ToDoForm from './components/ToDoForm'
 import SignUpForm from './components/SignUpForm'
 import ToDoContainer from './containers/ToDoContainer'
 import { baseURL, deleteToDo, patchToDo, postToDo } from './helpers'
+import { Switch, Route } from 'react-router-dom'
 
 const parseHTTPResponse = response => response.json()
 
@@ -70,9 +71,11 @@ class App extends Component {
     return (
       <div className="App">
         <h1>To Do App</h1>
-        <SignUpForm signUp={this.signUp} alerts={this.state.alerts}/>
-        <ToDoForm submitAction={this.addToDo}/>
-        <ToDoContainer to_dos={this.state.to_dos} submitAction={this.updateToDo} removeToDo={this.removeToDo}/>
+        <Switch>
+          <Route path="/signup" render={ routerProps => <SignUpForm signUp={this.signUp} alerts={this.state.alerts}/> }/>
+          <Route render={ routerProps => <ToDoForm submitAction={this.addToDo}/>}></Route>
+          <ToDoContainer to_dos={this.state.to_dos} submitAction={this.updateToDo} removeToDo={this.removeToDo}/>
+        </Switch>
       </div>
     )
   }
