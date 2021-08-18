@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import ToDoForm from './components/ToDoForm'
+import SignUpForm from './components/SignUpForm'
 import ToDoContainer from './containers/ToDoContainer'
 import { baseURL, deleteToDo, patchToDo, postToDo } from './helpers'
 
@@ -46,6 +47,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>To Do App</h1>
+        <SignUpForm/>
         <ToDoForm submitAction={this.addToDo}/>
         <ToDoContainer to_dos={this.state.to_dos} submitAction={this.updateToDo} removeToDo={this.removeToDo}/>
       </div>

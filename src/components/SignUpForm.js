@@ -1,9 +1,25 @@
-import React { useState } from 'react'
+import React, { useState } from 'react'
 
 export default function SignUpForm(props) {
     
     const [ username, setUsername ] = useState("")
     const [ password, setPassword ] = useState("")
+
+    const handleSubmit = event => {
+        event.preventDefault()
+        let user = {
+            username,
+            password
+        }
+        
+        fetch(`http://localhost:3000/users`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({user})
+        })
+    }
 
     const handleChange = ({ target }) => {
         target.name === "username"
@@ -12,7 +28,7 @@ export default function SignUpForm(props) {
     }
 
     return (
-        <form className="signup-form">
+        <form className="signup-form" onSubmit={handleSubmit}>
             <label>Username</label>
             <input
                 type="text"
@@ -27,7 +43,7 @@ export default function SignUpForm(props) {
                 value={password}
                 onChange={handleChange}
             />
-            <input type="submit" />
+            <input type="submit"/>
         </form>
     )
 }
