@@ -57,9 +57,11 @@ class App extends Component {
     .then( response => {
       if ( response.errors ){
         this.setState({ alerts: response.errors })
-      } else { this.setState({
-        user: response.user,
-        alerts: ["User successfully created!"] // Change the error state in case previous alerts are set in state
+      } else {
+        localStorage.setItem('token', response.token)
+        this.setState({
+          user: response.user,
+          alerts: ["User successfully created!"] // Change the error state in case previous alerts are set in state
       })}
     })
   }
@@ -68,7 +70,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>To Do App</h1>
-        <SignUpForm signUp={this.signUp}/>
+        <SignUpForm signUp={this.signUp} alerts={this.state.alerts}/>
         <ToDoForm submitAction={this.addToDo}/>
         <ToDoContainer to_dos={this.state.to_dos} submitAction={this.updateToDo} removeToDo={this.removeToDo}/>
       </div>
