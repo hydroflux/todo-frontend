@@ -50,6 +50,12 @@ body {
   position: relative;
 }
 
+.close-button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
+
 .input-group {
   display: flex;
   justify-content: center;

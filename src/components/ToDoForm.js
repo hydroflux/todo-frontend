@@ -54,6 +54,17 @@ export default class ToDoForm extends Component {
         ) : null
     }
 
+    showCloseButton = () => {
+        return this.props.to_do
+        ? (
+            <button 
+                    className='close-button'
+                    onClick={this.props.handleToggle}
+                    >CLOSE FORM
+            </button>
+        ) : null
+    }
+
     render() {
         const { title, content, urgent } = this.state
 
@@ -85,6 +96,7 @@ export default class ToDoForm extends Component {
                 </div>
                 {this.showDoneCheckbox()}
                 <input type="submit" />
+                {this.showCloseButton()}
             </form>
         )
     }
