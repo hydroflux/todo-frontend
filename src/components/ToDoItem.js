@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import ToDoForm from './ToDoForm'
 
-export default function ToDoItem({ to_do, submitAction, deleteToDo }){
+export default function ToDoItem({ to_do, submitAction, removeToDo }){
     const { id, title, content } = to_do
 
     const [ isToggled, setIsToggled] = useState(false)
-    const handleClick = event => deleteToDo(id)
+    const handleClick = event => removeToDo(id)
     const handleToggle = () => setIsToggled( !isToggled )
 
     const toDoCard = () => (
