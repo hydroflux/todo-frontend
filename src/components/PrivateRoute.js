@@ -1,9 +1,8 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
-import Home from './Home'
 
-export default function PrivateRoute(props) {
+export default function PrivateRoute({ path, component: Component}) {
     return localStorage.token
-        ? <Route render={ () => <Home /> }/>
+        ? <Route exact path={path} render={ (routerProps) => <Component /> }/>
         : <Redirect to="/signup" />
 }

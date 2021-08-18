@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
-import ToDoForm from './components/ToDoForm'
 import SignUpForm from './components/SignUpForm'
-import ToDoContainer from './containers/ToDoContainer'
+import Home from './components/Home'
+import PrivateRoute from './components/PrivateRoute'
 import { baseURL, deleteToDo, patchToDo, postToDo } from './helpers'
 import { Switch, Route } from 'react-router-dom'
 
@@ -72,6 +72,14 @@ class App extends Component {
       <div className="App">
         <h1>To Do App</h1>
         <Switch>
+          <PrivateRoute
+            path="/"
+            component={Home}
+            submitAction={this.addToDo}
+            to_dos={this.state.to_dos}
+            updateToDo={this.updateToDo}
+            removeToDo={this.removeToDo}
+          />
           <Route path="/signup" render={ routerProps => <SignUpForm signUp={this.signUp} alerts={this.state.alerts}/> }/>
         </Switch>
       </div>
