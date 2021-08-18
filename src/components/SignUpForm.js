@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function SignUpForm({ alerts, signUp }) {
+export default function SignUpForm({ alerts, signUp, history }) {
     
     const [ username, setUsername ] = useState("")
     const [ password, setPassword ] = useState("")
@@ -12,6 +12,7 @@ export default function SignUpForm({ alerts, signUp }) {
             password
         }
         signUp(user)
+            .then( history.push('/') )
     }
 
     const handleChange = ({ target }) => {

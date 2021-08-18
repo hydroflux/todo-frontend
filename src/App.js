@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   signUp = user => {
-    fetch(`http://localhost:3000/users`, {
+    return fetch(`http://localhost:3000/users`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -73,6 +73,7 @@ class App extends Component {
         <h1>To Do App</h1>
         <Switch>
           <PrivateRoute
+            exact
             path="/"
             component={Home}
             submitAction={this.addToDo}
@@ -80,7 +81,9 @@ class App extends Component {
             updateToDo={this.updateToDo}
             removeToDo={this.removeToDo}
           />
-          <Route path="/signup" render={ routerProps => <SignUpForm signUp={this.signUp} alerts={this.state.alerts}/> }/>
+          <Route path="/signup" render={ routerProps => {
+            return <SignUpForm signUp={this.signUp} alerts={this.state.alerts} {...routerProps}/> }
+          }/>
         </Switch>
       </div>
     )
