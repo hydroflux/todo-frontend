@@ -12,7 +12,7 @@ class App extends Component {
   state = {
     to_dos: [],
     user: {},
-    alert: []
+    alerts: [] // Could be good or bad alerts (not necessarily errors)
   }
 
 
@@ -59,7 +59,7 @@ class App extends Component {
         this.setState({ alerts: response.errors })
       } else { this.setState({
         user: response.user,
-        alerts: ["User successfully created!"]
+        alerts: ["User successfully created!"] // Change the error state in case previous alerts are set in state
       })}
     })
   }
