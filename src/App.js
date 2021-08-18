@@ -4,7 +4,7 @@ import SignUpForm from './components/SignUpForm'
 import Home from './components/Home'
 import PrivateRoute from './components/PrivateRoute'
 import { baseURL, deleteToDo, patchToDo, postToDo } from './helpers'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
 const parseHTTPResponse = response => response.json()
 
@@ -84,6 +84,7 @@ class App extends Component {
           <Route path="/signup" render={ routerProps => {
             return <SignUpForm signUp={this.signUp} alerts={this.state.alerts} {...routerProps}/> }
           }/>
+          <Redirect to="/" /> 
         </Switch>
       </div>
     )
