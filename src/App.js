@@ -73,8 +73,6 @@ class App extends Component {
         <h1>To Do App</h1>
         <Switch>
           <Route path="/signup" render={ routerProps => <SignUpForm signUp={this.signUp} alerts={this.state.alerts}/> }/>
-          <Route render={ routerProps => <ToDoForm submitAction={this.addToDo}/>}></Route>
-          <ToDoContainer to_dos={this.state.to_dos} submitAction={this.updateToDo} removeToDo={this.removeToDo}/>
         </Switch>
       </div>
     )
