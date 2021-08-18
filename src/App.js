@@ -10,7 +10,9 @@ const parseHTTPResponse = response => response.json()
 class App extends Component {
   
   state = {
-    to_dos: []
+    to_dos: [],
+    user: {},
+    alert: []
   }
 
 
@@ -43,11 +45,30 @@ class App extends Component {
     deleteToDo(id)
   }
 
+  signUp = user => {
+    fetch(`http://localhost:3000/users`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({user})
+    })
+    .then( parseHTTPResponse )
+    .then( response => {
+      if ( response.errors ){
+        this.setState({ alerts: response.errors })
+      } else { this.setState({
+        user: response.user,
+        alerts: ["User successfully created!"]
+      })}
+    })
+  }
+
   render(){
     return (
       <div className="App">
         <h1>To Do App</h1>
-        <SignUpForm/>
+        <SignUpForm signUp={this.signUp}/>
         <ToDoForm submitAction={this.addToDo}/>
         <ToDoContainer to_dos={this.state.to_dos} submitAction={this.updateToDo} removeToDo={this.removeToDo}/>
       </div>

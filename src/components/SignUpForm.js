@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function SignUpForm(props) {
+export default function SignUpForm({ signUp }) {
     
     const [ username, setUsername ] = useState("")
     const [ password, setPassword ] = useState("")
@@ -11,14 +11,7 @@ export default function SignUpForm(props) {
             username,
             password
         }
-        
-        fetch(`http://localhost:3000/users`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({user})
-        })
+        signUp(user)
     }
 
     const handleChange = ({ target }) => {
