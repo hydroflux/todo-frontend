@@ -6,6 +6,7 @@ import ToDoContainer from '../containers/ToDoContainer'
 export default function Home(props) {
     return (
         <>
+            {console.log(props)}
             <ToDoForm submitAction={props.addToDo}/>
             <ToDoContainer to_dos={props.to_dos} submitAction={props.updateToDo} removeToDo={props.removeToDo}/>
         </>

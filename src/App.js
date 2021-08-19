@@ -98,7 +98,7 @@ class App extends Component {
             exact
             path="/"
             component={Home}
-            submitAction={this.addToDo}
+            addToDo={this.addToDo}
             to_dos={this.state.to_dos}
             updateToDo={this.updateToDo}
             removeToDo={this.removeToDo}

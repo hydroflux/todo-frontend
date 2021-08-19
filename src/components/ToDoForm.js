@@ -33,6 +33,7 @@ export default class ToDoForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
+        console.log(this.props)
         this.props.submitAction( this.state )
         if (this.props.handleToggle){
             this.props.handleToggle()
