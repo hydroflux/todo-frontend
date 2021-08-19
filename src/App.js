@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   loginUser = ({username, password}) => {
-    fetch(`http://localhost:3000/login`, {
+    return fetch(`http://localhost:3000/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

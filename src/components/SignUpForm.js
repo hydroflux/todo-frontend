@@ -17,11 +17,12 @@ export default function SignUpForm({ alerts, signUp, history, loginUser }) {
             password
         }
 
+        console.log(login)
         login
         ? loginUser(user)
-            .then( history.push('/'))
+            .then( () => history.push('/'))
         : signUp(user)
-            .then( history.push('/') )
+            .then( () => history.push('/') )
     }
 
     const handleChange = ({ target }) => {
