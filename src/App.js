@@ -16,19 +16,6 @@ class App extends Component {
     alerts: [] // Could be good or bad alerts (not necessarily errors)
   }
 
-
-  getToDos(){
-    fetch( baseURL )
-      .then( parseHTTPResponse )
-      .then( to_dos => this.setState({ to_dos }) )
-  }
-
-  // Lifecycle Method which runs at the beginning of a components lifecycle and
-  // only runs one time
-  componentDidMount(){
-    this.getToDos()
-  }
-
   addToDo = ( newToDo ) => {
     this.setState({ to_dos: [...this.state.to_dos, newToDo] })
     postToDo(newToDo)
@@ -62,7 +49,8 @@ class App extends Component {
         localStorage.setItem('token', response.token)
         this.setState({
           user: response.user,
-          alerts: ["Login successful!"]
+          alerts: ["Login successful!"],
+          to_dos: response.to_dos
       })}
     })
   }
@@ -83,7 +71,8 @@ class App extends Component {
         localStorage.setItem('token', response.token)
         this.setState({
           user: response.user,
-          alerts: ["User successfully created!"] // Change the error state in case previous alerts are set in state
+          alerts: ["User successfully created!"], // Change the error state in case previous alerts are set in state
+          to_dos: response.to_dos
       })}
     })
   }
