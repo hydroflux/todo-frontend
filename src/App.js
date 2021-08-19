@@ -67,7 +67,7 @@ class App extends Component {
     .then( parseHTTPResponse )
     .then( response => {
       if ( response.errors ){
-        this.setState({ alerts: response.errors })
+        this.setState({ alerts: [response.errors] })
       } else {
         localStorage.setItem('token', response.token)
         this.setState({
@@ -105,7 +105,12 @@ class App extends Component {
   }
 
   logoutUser = () => {
-    this.setState({ loggedIn: false })
+    this.setState({ 
+      loggedIn: false,
+      to_dos: [],
+      alerts: [],
+      user: {}
+    })
   }
 
   render(){
