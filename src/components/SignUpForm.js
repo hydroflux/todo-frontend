@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function SignUpForm({ alerts, signUp, history }) {
+export default function SignUpForm({ alerts, signUp, history, loginUser }) {
     
     const [ username, setUsername ] = useState("")
     const [ password, setPassword ] = useState("")
@@ -12,7 +12,11 @@ export default function SignUpForm({ alerts, signUp, history }) {
             username,
             password
         }
-        signUp(user)
+
+        login
+        ? loginUser(user)
+            .then( history.push('/'))
+        : signUp(user)
             .then( history.push('/') )
     }
 

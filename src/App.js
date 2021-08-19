@@ -4,7 +4,7 @@ import SignUpForm from './components/SignUpForm'
 import Home from './components/Home'
 import PrivateRoute from './components/PrivateRoute'
 import { baseURL, deleteToDo, patchToDo, postToDo } from './helpers'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const parseHTTPResponse = response => response.json()
 
@@ -46,6 +46,27 @@ class App extends Component {
     deleteToDo(id)
   }
 
+  loginUser = ({username, password}) => {
+    fetch(`http://localhost:3000/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({username, password})
+    })
+    .then( parseHTTPResponse )
+    .then( response => {
+      if ( response.errors ){
+        this.setState({ alerts: response.errors })
+      } else {
+        localStorage.setItem('token', response.token)
+        this.setState({
+          user: response.user,
+          alerts: ["Login successful!"]
+      })}
+    })
+  }
+
   signUp = user => {
     return fetch(`http://localhost:3000/users`, {
         method: "POST",
@@ -82,7 +103,7 @@ class App extends Component {
             removeToDo={this.removeToDo}
           />
           <Route path="/signup" render={ routerProps => {
-            return <SignUpForm signUp={this.signUp} alerts={this.state.alerts} {...routerProps}/> }
+            return <SignUpForm signUp={this.signUp} loginUser={this.loginUser} alerts={this.state.alerts} {...routerProps}/> }
           }/>
           <Redirect to="/" /> 
         </Switch>
