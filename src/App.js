@@ -16,6 +16,27 @@ class App extends Component {
     alerts: [] // Could be good or bad alerts (not necessarily errors)
   }
 
+  componentDidMount = () => {
+    this.authorize_user()
+  }
+
+  authorize_user = () => {
+    fetch("http://localhost:3000/profile", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${localStorage.token}`
+      }
+    })
+    .then( parseHTTPResponse )
+    .then( response => {
+      this.setState({
+        user: response.user,
+        to_dos: response.to_dos
+      })
+
+    })
+  }
+
   addToDo = ( newToDo ) => {
     this.setState({ to_dos: [...this.state.to_dos, newToDo] })
     postToDo(newToDo)
