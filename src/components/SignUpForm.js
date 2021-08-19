@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function SignUpForm({ alerts, signUp, history, loginUser }) {
     
     const [ username, setUsername ] = useState("")
     const [ password, setPassword ] = useState("")
     const [ login, setLogin ] = useState(false)
+
+    useEffect( () => {
+        localStorage.removeItem('token')
+    }, [])
 
     const handleSubmit = event => {
         event.preventDefault()

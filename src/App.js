@@ -91,6 +91,11 @@ class App extends Component {
   render(){
     return (
       <div className="App">
+        <header>
+          <nav>
+            <Link to="/signup">Logout</Link>
+          </nav>
+        </header>
         <h1>To Do App</h1>
         <Switch>
           <PrivateRoute
