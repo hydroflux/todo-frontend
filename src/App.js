@@ -3,7 +3,7 @@ import './App.css'
 import SignUpForm from './components/SignUpForm'
 import Home from './components/Home'
 import PrivateRoute from './components/PrivateRoute'
-import { baseURL, deleteToDo, patchToDo, postToDo } from './helpers'
+import { deleteToDo, patchToDo, postToDo } from './helpers'
 import { Switch, Route, Redirect, Link } from 'react-router-dom'
 
 const parseHTTPResponse = response => response.json()
@@ -102,16 +102,16 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <nav>
-            {this.state.user.username
+            {this.state.user
             ? (
                 <>
                   <p>Welcome back {this.state.user.username}</p>
-                  <Link to="/signup">Logout</Link>
+                  <nav>
+                    <Link to="/signup">Logout</Link>
+                  </nav>
                 </>
               )
             : null }
-          </nav>
         </header>
         <h1>To Do App</h1>
         <Switch>

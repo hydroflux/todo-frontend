@@ -17,7 +17,6 @@ export default function SignUpForm({ alerts, signUp, history, loginUser }) {
             password
         }
 
-        console.log(login)
         login
         ? loginUser(user)
             .then( () => history.push('/'))
@@ -36,7 +35,7 @@ export default function SignUpForm({ alerts, signUp, history, loginUser }) {
         setLogin(!login)
     }
 
-    const showAlerts = () => alerts.map( alert => <p>{alert}</p> )
+    const showAlerts = () => alerts.map( alert => <p key={alerts.indexOf(alert)} >{alert}</p> )
 
     return (
         <form className="signup-form" onSubmit={handleSubmit}>
