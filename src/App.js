@@ -41,7 +41,7 @@ class App extends Component {
 
   addToDo = ( newToDo ) => {
     this.setState({ to_dos: [...this.state.to_dos, newToDo] })
-    postToDo(newToDo)
+    postToDo(newToDo, this.state.user)
   }
 
   updateToDo = (updatedToDo) => {
@@ -135,7 +135,14 @@ class App extends Component {
             removeToDo={this.removeToDo}
           />
           <Route path="/signup" render={ routerProps => {
-            return <SignUpForm signUp={this.signUp} loginUser={this.loginUser} alerts={this.state.alerts} {...routerProps}/> }
+            return (
+              <SignUpForm
+                signUp={this.signUp}
+                loginUser={this.loginUser}
+                alerts={this.state.alerts}
+                {...routerProps}
+              />
+            )}
           }/>
           <Redirect to="/" /> 
         </Switch>

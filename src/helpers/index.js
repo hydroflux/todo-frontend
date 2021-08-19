@@ -1,7 +1,7 @@
-export const baseURL = 'http://localhost:3000/to_dos/'
+export const toDoURL = 'http://localhost:3000/to_dos/'
 
 export function patchToDo(to_do){
-    fetch( `${baseURL}${to_do.id}`, {
+    fetch( `${toDoURL}${to_do.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"
@@ -11,17 +11,19 @@ export function patchToDo(to_do){
 }
 
 
-export function postToDo(to_do){
-  fetch( baseURL, {
+export function postToDo(to_do, user){
+  fetch( toDoURL, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${localStorage.token}`
+      // Every request to the back-end needs to include an authorization header after adding auth
     },
-    body: JSON.stringify({ to_do })
+    body: JSON.stringify({ to_do: {...to_do, user_id: user.id} })
   })
 }
 
 
 export function deleteToDo(id){
-  fetch( `${baseURL}${id}`, { method: 'DELETE' })
+  fetch( `${toDoURL}${id}`, { method: 'DELETE' })
 }
