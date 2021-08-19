@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function SignUpForm({ alerts, signUp, history }) {
     
     const [ username, setUsername ] = useState("")
     const [ password, setPassword ] = useState("")
-
-    useEffect( () => {
-        localStorage.removeItem('token')
-    }, [])
 
     const handleSubmit = event => {
         event.preventDefault()

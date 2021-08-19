@@ -108,6 +108,7 @@ class App extends Component {
   }
 
   logoutUser = () => {
+    localStorage.removeItem('token')
     this.setState({ 
       loggedIn: false,
       to_dos: [],
@@ -120,7 +121,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-            {this.state.loggedIn
+            {this.state.user
             ? (
                 <>
                   <p>Welcome back {this.state.user.username}</p>
