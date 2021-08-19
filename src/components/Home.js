@@ -2,7 +2,6 @@ import React from 'react'
 import ToDoForm from './ToDoForm'
 import ToDoContainer from '../containers/ToDoContainer'
 
-
 export default function Home(props) {
     return (
         <>

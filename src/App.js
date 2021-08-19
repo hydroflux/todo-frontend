@@ -13,7 +13,8 @@ class App extends Component {
   state = {
     to_dos: [],
     user: {},
-    alerts: [] // Could be good or bad alerts (not necessarily errors)
+    alerts: [], // Could be good or bad alerts (not necessarily errors)
+    loggedIn: false
   }
 
   componentDidMount = () => {
@@ -34,6 +35,7 @@ class App extends Component {
         to_dos: response.to_dos
       })
 
+      if (this.state.user) this.setState({ loggedIn: true })
     })
   }
 
@@ -73,6 +75,8 @@ class App extends Component {
           alerts: ["Login successful!"],
           to_dos: response.to_dos
       })}
+
+      if (this.state.user) this.setState({ loggedIn: true })
     })
   }
 
@@ -95,19 +99,25 @@ class App extends Component {
           alerts: ["User successfully created!"], // Change the error state in case previous alerts are set in state
           to_dos: response.to_dos
       })}
+
+      if (this.state.user) this.setState({ loggedIn: true })
     })
+  }
+
+  logoutUser = () => {
+    this.setState({ loggedIn: false })
   }
 
   render(){
     return (
       <div className="App">
         <header>
-            {this.state.user
+            {this.state.loggedIn
             ? (
                 <>
                   <p>Welcome back {this.state.user.username}</p>
                   <nav>
-                    <Link to="/signup">Logout</Link>
+                    <Link to="/signup" onClick={this.logoutUser}>Logout</Link>
                   </nav>
                 </>
               )
