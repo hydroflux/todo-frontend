@@ -93,7 +93,14 @@ class App extends Component {
       <div className="App">
         <header>
           <nav>
-            <Link to="/signup">Logout</Link>
+            {this.state.user.username
+            ? (
+                <>
+                  <p>Welcome back {this.state.user.username}</p>
+                  <Link to="/signup">Logout</Link>
+                </>
+              )
+            : null }
           </nav>
         </header>
         <h1>To Do App</h1>
