@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css'
 import SignUpForm from './components/SignUpForm'
+import LoginForm from './components/LoginForm'
 import Home from './components/Home'
 import PrivateRoute from './components/PrivateRoute'
 import { deleteToDo, patchToDo, postToDo } from './helpers'
@@ -69,6 +70,7 @@ class App extends Component {
       if ( response.errors ){
         this.setState({ alerts: [response.errors] })
       } else {
+        console.log("there")
         localStorage.setItem('token', response.token)
         this.setState({
           user: response.user,
@@ -93,6 +95,7 @@ class App extends Component {
       if ( response.errors ){
         this.setState({ alerts: response.errors })
       } else {
+        console.log("here")
         localStorage.setItem('token', response.token)
         this.setState({
           user: response.user,
@@ -143,6 +146,14 @@ class App extends Component {
             return (
               <SignUpForm
                 signUp={this.signUp}
+                alerts={this.state.alerts}
+                {...routerProps}
+              />
+            )}
+          }/>
+          <Route path="/login" render={ routerProps => {
+            return (
+              <LoginForm
                 loginUser={this.loginUser}
                 alerts={this.state.alerts}
                 {...routerProps}
